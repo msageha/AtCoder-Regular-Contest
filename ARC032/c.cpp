@@ -30,24 +30,25 @@ const double PI = acos(-1.0);
 //debug
 #define dump(x)  cout << #x << " = " << (x) << endl;
 
-int main() {
-  int L, R;
-  cin >> L >> R;
-  VI l(L);
-  VI r(R);
-  int ans = 0;
-  for(int i=0; i<L; i++) cin >> l[i];
-  for(int i=0; i<R; i++) cin >> r[i];
-  sort(l.begin(), l.end());
-  sort(r.begin(), r.end());
-  int l_index = 0;
-  int r_index =0;
-  while (l_index < L && r_index < R ) {
-    // cout << l[l_index] << ":" << r[r_index] << endl;
-    if(l[l_index] == r[r_index]) {ans++; l_index++; r_index++;}
-    else if(l[l_index] > r[r_index]) r_index++;
-    else l_index++;
+int main() { //エラトステネスの篩を行う
+  int n;
+  cin >> n;
+  int N = 0;
+  FOR(i,1, n+1) N += i;
+  vector<bool> check(N+1, true);
+  check[0] = false;
+  check[1] = false;
+  int min_prime = 2;
+  while (min_prime < N) {
+    for(int i=min_prime;i<=N; i += min_prime) {
+      check[i] = false;
+    }
+    while (! check[min_prime]) min_prime++;
+    if(min_prime == N) {
+        cout << "WANWAN" << endl;
+        return 0;
+    }
   }
-  cout << ans << endl;
+  cout << "BOWWOW" << endl;
   return 0;
 }

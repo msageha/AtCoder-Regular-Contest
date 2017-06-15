@@ -31,22 +31,15 @@ const double PI = acos(-1.0);
 #define dump(x)  cout << #x << " = " << (x) << endl;
 
 int main() {
-  int L, R;
-  cin >> L >> R;
-  VI l(L);
-  VI r(R);
-  int ans = 0;
-  for(int i=0; i<L; i++) cin >> l[i];
-  for(int i=0; i<R; i++) cin >> r[i];
-  sort(l.begin(), l.end());
-  sort(r.begin(), r.end());
-  int l_index = 0;
-  int r_index =0;
-  while (l_index < L && r_index < R ) {
-    // cout << l[l_index] << ":" << r[r_index] << endl;
-    if(l[l_index] == r[r_index]) {ans++; l_index++; r_index++;}
-    else if(l[l_index] > r[r_index]) r_index++;
-    else l_index++;
+  string name;
+  cin >> name;
+  string ans = "YES";
+  REP(i, name.size()/2) {
+    if (name[i]==name[name.size()-i-1] || name[i] == '*' || name[name.size()-i-1] == '*') ;
+    else {
+      ans = "NO";
+      break;
+    }
   }
   cout << ans << endl;
   return 0;

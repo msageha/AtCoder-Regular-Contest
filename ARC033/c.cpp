@@ -30,24 +30,15 @@ const double PI = acos(-1.0);
 //debug
 #define dump(x)  cout << #x << " = " << (x) << endl;
 
+int subStr(int N, int i) { //長さNの文字列において長さiの部分文字列の個数を返す
+  return N - i + 1;
+}
+
 int main() {
-  int L, R;
-  cin >> L >> R;
-  VI l(L);
-  VI r(R);
+  LL N;
+  cin >> N;
   int ans = 0;
-  for(int i=0; i<L; i++) cin >> l[i];
-  for(int i=0; i<R; i++) cin >> r[i];
-  sort(l.begin(), l.end());
-  sort(r.begin(), r.end());
-  int l_index = 0;
-  int r_index =0;
-  while (l_index < L && r_index < R ) {
-    // cout << l[l_index] << ":" << r[r_index] << endl;
-    if(l[l_index] == r[r_index]) {ans++; l_index++; r_index++;}
-    else if(l[l_index] > r[r_index]) r_index++;
-    else l_index++;
-  }
+  FOR(i, 1, N+1) ans += subStr(N, i);
   cout << ans << endl;
   return 0;
 }
