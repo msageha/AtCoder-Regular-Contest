@@ -33,7 +33,7 @@ const double PI = acos(-1.0);
 //debug
 #define dump(x)  cout << #x << " = " << (x) << endl;
 
-int main() { //エラトステネスの篩を行う
+int main() {
   int N, K;
   cin >> N >> K;
   int A = INF;
